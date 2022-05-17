@@ -8,6 +8,18 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    private var viewModel: MainViewModel!
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

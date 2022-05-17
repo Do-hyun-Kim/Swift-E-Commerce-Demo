@@ -11,6 +11,7 @@ protocol PresenterDI {
     func makeAppCoordinator(window: UIWindow) -> AppCoordinator
     func makeMainViewController() -> MainViewController
     func makeMainCoordinator(presenter: UINavigationController) -> MainCoordinator
+    func makeMainViewModel() -> MainViewModel
 }
 
 
@@ -22,7 +23,7 @@ class AppFlowDI: PresenterDI {
     }
     
     func makeMainViewController() -> MainViewController {
-        let mainViewController = MainViewController()
+        let mainViewController = MainViewController(viewModel: makeMainViewModel())
         mainViewController.title = "상품 정보"
         return mainViewController
     }
@@ -30,5 +31,10 @@ class AppFlowDI: PresenterDI {
     func makeMainCoordinator(presenter: UINavigationController) -> MainCoordinator {
         let mainCoordinator = MainCoordinator(presenter: presenter, flowDI: self)
         return mainCoordinator
+    }
+    
+    func makeMainViewModel() -> MainViewModel {
+        let mainViewModel = MainViewModel()
+        return mainViewModel
     }
 }

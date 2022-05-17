@@ -19,6 +19,7 @@
 		FFE853FB2833D517008A5381 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FA2833D517008A5381 /* AppCoordinator.swift */; };
 		FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */; };
 		FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FF2833E2B8008A5381 /* ProductEntities.swift */; };
+		FFE854022833E9BD008A5381 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE854012833E9BD008A5381 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		FFE853FA2833D517008A5381 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowDI.swift; sourceTree = "<group>"; };
 		FFE853FF2833E2B8008A5381 /* ProductEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntities.swift; sourceTree = "<group>"; };
+		FFE854012833E9BD008A5381 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		FFE853F22833CB7B008A5381 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FFE854012833E9BD008A5381 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE854022833E9BD008A5381 /* MainViewModel.swift in Sources */,
 				FFE853FB2833D517008A5381 /* AppCoordinator.swift in Sources */,
 				FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */,
 				FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */,
