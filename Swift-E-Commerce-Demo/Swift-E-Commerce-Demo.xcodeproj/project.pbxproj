@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853BD2833C8D4008A5381 /* AppDelegate.swift */; };
 		FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */; };
-		FFE853C22833C8D4008A5381 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853C12833C8D4008A5381 /* ViewController.swift */; };
-		FFE853C52833C8D4008A5381 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFE853C32833C8D4008A5381 /* Main.storyboard */; };
+		FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853C12833C8D4008A5381 /* MainViewController.swift */; };
 		FFE853C72833C8DA008A5381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFE853C62833C8DA008A5381 /* Assets.xcassets */; };
 		FFE853CA2833C8DA008A5381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFE853C82833C8DA008A5381 /* LaunchScreen.storyboard */; };
 		FFE853D52833C8DA008A5381 /* Swift_E_Commerce_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853D42833C8DA008A5381 /* Swift_E_Commerce_DemoTests.swift */; };
 		FFE853DF2833C8DA008A5381 /* Swift_E_Commerce_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853DE2833C8DA008A5381 /* Swift_E_Commerce_DemoUITests.swift */; };
 		FFE853E12833C8DA008A5381 /* Swift_E_Commerce_DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853E02833C8DA008A5381 /* Swift_E_Commerce_DemoUITestsLaunchTests.swift */; };
 		FFE853EE2833C926008A5381 /* product_list.json in Resources */ = {isa = PBXBuildFile; fileRef = FFE853ED2833C926008A5381 /* product_list.json */; };
+		FFE853FB2833D517008A5381 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FA2833D517008A5381 /* AppCoordinator.swift */; };
+		FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,7 @@
 		FFE853BA2833C8D4008A5381 /* Swift-E-Commerce-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-E-Commerce-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE853BD2833C8D4008A5381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FFE853C12833C8D4008A5381 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FFE853C42833C8D4008A5381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFE853C12833C8D4008A5381 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FFE853C62833C8DA008A5381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFE853C92833C8DA008A5381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFE853CB2833C8DA008A5381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +51,8 @@
 		FFE853DE2833C8DA008A5381 /* Swift_E_Commerce_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_E_Commerce_DemoUITests.swift; sourceTree = "<group>"; };
 		FFE853E02833C8DA008A5381 /* Swift_E_Commerce_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_E_Commerce_DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FFE853ED2833C926008A5381 /* product_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = product_list.json; sourceTree = "<group>"; };
+		FFE853FA2833D517008A5381 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowDI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +103,9 @@
 		FFE853BC2833C8D4008A5381 /* Swift-E-Commerce-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				FFE853BD2833C8D4008A5381 /* AppDelegate.swift */,
-				FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */,
-				FFE853C12833C8D4008A5381 /* ViewController.swift */,
-				FFE853C32833C8D4008A5381 /* Main.storyboard */,
+				FFE853EF2833CB25008A5381 /* Applications */,
+				FFE853F42833CB88008A5381 /* Domain */,
+				FFE853F12833CB68008A5381 /* Presentation */,
 				FFE853C62833C8DA008A5381 /* Assets.xcassets */,
 				FFE853C82833C8DA008A5381 /* LaunchScreen.storyboard */,
 				FFE853CB2833C8DA008A5381 /* Info.plist */,
@@ -128,6 +129,96 @@
 				FFE853E02833C8DA008A5381 /* Swift_E_Commerce_DemoUITestsLaunchTests.swift */,
 			);
 			path = "Swift-E-Commerce-DemoUITests";
+			sourceTree = "<group>";
+		};
+		FFE853EF2833CB25008A5381 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853BD2833C8D4008A5381 /* AppDelegate.swift */,
+				FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		FFE853F12833CB68008A5381 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853FC2833D5B7008A5381 /* FlowDI */,
+				FFE853F92833D504008A5381 /* Coordinator */,
+				FFE853F32833CB82008A5381 /* View */,
+				FFE853F22833CB7B008A5381 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FFE853F22833CB7B008A5381 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FFE853F32833CB82008A5381 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853C12833C8D4008A5381 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFE853F42833CB88008A5381 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853F52833CBA5008A5381 /* Entities */,
+				FFE853F62833CBBD008A5381 /* UseCases */,
+				FFE853F72833CBC9008A5381 /* Interfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FFE853F52833CBA5008A5381 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		FFE853F62833CBBD008A5381 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UseCases;
+			sourceTree = "<group>";
+		};
+		FFE853F72833CBC9008A5381 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853F82833CBF1008A5381 /* Repositories */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		FFE853F82833CBF1008A5381 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Repositories;
+			sourceTree = "<group>";
+		};
+		FFE853F92833D504008A5381 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853FA2833D517008A5381 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		FFE853FC2833D5B7008A5381 /* FlowDI */ = {
+			isa = PBXGroup;
+			children = (
+				FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */,
+			);
+			path = FlowDI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +328,6 @@
 				FFE853CA2833C8DA008A5381 /* LaunchScreen.storyboard in Resources */,
 				FFE853EE2833C926008A5381 /* product_list.json in Resources */,
 				FFE853C72833C8DA008A5381 /* Assets.xcassets in Resources */,
-				FFE853C52833C8D4008A5381 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFE853C22833C8D4008A5381 /* ViewController.swift in Sources */,
+				FFE853FB2833D517008A5381 /* AppCoordinator.swift in Sources */,
+				FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */,
+				FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */,
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
 				FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */,
 			);
@@ -301,14 +393,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FFE853C32833C8D4008A5381 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFE853C42833C8D4008A5381 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FFE853C82833C8DA008A5381 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -448,7 +532,6 @@
 				INFOPLIST_FILE = "Swift-E-Commerce-Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,7 +559,6 @@
 				INFOPLIST_FILE = "Swift-E-Commerce-Demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
