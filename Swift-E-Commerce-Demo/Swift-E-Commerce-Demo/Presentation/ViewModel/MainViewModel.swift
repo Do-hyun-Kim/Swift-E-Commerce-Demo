@@ -28,14 +28,16 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     //MARK: - OUTPUT
     let items: BehaviorSubject<[ProductEntities]> = .init(value: [])
     private let actions: MainViewModelAction?
+    private let mainUseCase: MainUseCase
     private var productItems: [ProductEntities] = []
     
     var isEmpty: Bool {
         return productItems.isEmpty
     }
     
-    init(actions: MainViewModelAction) {
+    init(actions: MainViewModelAction, mainUseCase: MainUseCase) {
         self.actions = actions
+        self.mainUseCase = mainUseCase
     }
     
 }

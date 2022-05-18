@@ -13,6 +13,8 @@ protocol PresenterDI {
     func makeMainCoordinator(presenter: UINavigationController) -> MainCoordinator
     func makeMainViewModel(actions: MainViewModelAction) -> MainViewModel
     func makeDetailViewController() -> DetailViewController
+    func makeMainUseCase() -> MainUseCase
+    func makeMainRepository() -> MainRepository
 }
 
 
@@ -35,8 +37,18 @@ class AppFlowDI: PresenterDI {
     }
     
     func makeMainViewModel(actions: MainViewModelAction) -> MainViewModel {
-        let mainViewModel = MainViewModel(actions: actions)
+        let mainViewModel = MainViewModel(actions: actions, mainUseCase: makeMainUseCase())
         return mainViewModel
+    }
+    
+    func makeMainUseCase() -> MainUseCase {
+        let mainUseCase = DefaultMainUseCase(mainRepository: makeMainRepository())
+        return mainUseCase
+    }
+    
+    func makeMainRepository() -> MainRepository {
+        let mainRepository = DefaultMainRepository()
+        return mainRepository
     }
     
     func makeDetailViewController() -> DetailViewController {

@@ -44,6 +44,17 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     
     func testProductList() {
         //MARK: Product List Test Code
+        //given
+        let actions = MainViewModelAction(showDetailView: testDetailView)
+        viewModel = flowDI.makeMainViewModel(actions: actions)
+        //when
+        
+        viewModel.mainUseCase.execute { result in
+            self.viewModel.items.onNext(result)
+        }
+        
+        //then
+        XCTAssertNotNil(testProductList, "testProductList Value Not Nil")
     }
     
     func testDetailView(product: ProductEntities) {}
