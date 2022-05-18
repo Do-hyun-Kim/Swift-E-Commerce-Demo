@@ -41,6 +41,11 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         
     }
     
+    
+    func testProductList() {
+        //MARK: Product List Test Code
+    }
+    
     func testDetailView(product: ProductEntities) {}
     
     
