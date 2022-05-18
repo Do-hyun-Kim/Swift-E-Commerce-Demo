@@ -9,9 +9,10 @@ import UIKit
 
 protocol PresenterDI {
     func makeAppCoordinator(window: UIWindow) -> AppCoordinator
-    func makeMainViewController() -> MainViewController
+    func makeMainViewController(actions: MainViewModelAction) -> MainViewController
     func makeMainCoordinator(presenter: UINavigationController) -> MainCoordinator
-    func makeMainViewModel() -> MainViewModel
+    func makeMainViewModel(actions: MainViewModelAction) -> MainViewModel
+    func makeDetailViewController() -> DetailViewController
 }
 
 
@@ -22,8 +23,8 @@ class AppFlowDI: PresenterDI {
         return appCoordinator
     }
     
-    func makeMainViewController() -> MainViewController {
-        let mainViewController = MainViewController(viewModel: makeMainViewModel())
+    func makeMainViewController(actions: MainViewModelAction) -> MainViewController {
+        let mainViewController = MainViewController(viewModel: makeMainViewModel(actions: actions))
         mainViewController.title = "상품 정보"
         return mainViewController
     }
@@ -33,8 +34,13 @@ class AppFlowDI: PresenterDI {
         return mainCoordinator
     }
     
-    func makeMainViewModel() -> MainViewModel {
-        let mainViewModel = MainViewModel()
+    func makeMainViewModel(actions: MainViewModelAction) -> MainViewModel {
+        let mainViewModel = MainViewModel(actions: actions)
         return mainViewModel
+    }
+    
+    func makeDetailViewController() -> DetailViewController {
+        let detailViewController = DetailViewController()
+        return detailViewController
     }
 }

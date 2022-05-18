@@ -31,11 +31,19 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     
     func testFlowDIViewModel() {
         //given
-        viewModel = flowDI.makeMainViewModel()
+        let actions = MainViewModelAction(showDetailView: testDetailView)
         
+        //when
+        viewModel = flowDI.makeMainViewModel(actions: actions)
+        
+        //then
         XCTAssertNotNil(viewModel, "ViewModel Not Make")
         
     }
+    
+    func testDetailView(product: ProductEntities) {}
+    
+    
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

@@ -20,6 +20,10 @@
 		FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */; };
 		FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FF2833E2B8008A5381 /* ProductEntities.swift */; };
 		FFE854022833E9BD008A5381 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE854012833E9BD008A5381 /* MainViewModel.swift */; };
+		FFE854052834B990008A5381 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FFE854042834B990008A5381 /* RxCocoa */; };
+		FFE854072834B990008A5381 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = FFE854062834B990008A5381 /* RxRelay */; };
+		FFE854092834B990008A5381 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFE854082834B990008A5381 /* RxSwift */; };
+		FFE8540B2834C308008A5381 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8540A2834C308008A5381 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,7 @@
 		FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowDI.swift; sourceTree = "<group>"; };
 		FFE853FF2833E2B8008A5381 /* ProductEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntities.swift; sourceTree = "<group>"; };
 		FFE854012833E9BD008A5381 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FFE8540A2834C308008A5381 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE854092834B990008A5381 /* RxSwift in Frameworks */,
+				FFE854072834B990008A5381 /* RxRelay in Frameworks */,
+				FFE854052834B990008A5381 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE853C12833C8D4008A5381 /* MainViewController.swift */,
+				FFE8540A2834C308008A5381 /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +252,11 @@
 			dependencies = (
 			);
 			name = "Swift-E-Commerce-Demo";
+			packageProductDependencies = (
+				FFE854042834B990008A5381 /* RxCocoa */,
+				FFE854062834B990008A5381 /* RxRelay */,
+				FFE854082834B990008A5381 /* RxSwift */,
+			);
 			productName = "Swift-E-Commerce-Demo";
 			productReference = FFE853BA2833C8D4008A5381 /* Swift-E-Commerce-Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +329,9 @@
 				Base,
 			);
 			mainGroup = FFE853B12833C8D4008A5381;
+			packageReferences = (
+				FFE854032834B990008A5381 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = FFE853BB2833C8D4008A5381 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -365,6 +382,7 @@
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
 				FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */,
 				FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */,
+				FFE8540B2834C308008A5381 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +736,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FFE854032834B990008A5381 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFE854042834B990008A5381 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE854032834B990008A5381 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		FFE854062834B990008A5381 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE854032834B990008A5381 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		FFE854082834B990008A5381 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFE854032834B990008A5381 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FFE853B22833C8D4008A5381 /* Project object */;
 }

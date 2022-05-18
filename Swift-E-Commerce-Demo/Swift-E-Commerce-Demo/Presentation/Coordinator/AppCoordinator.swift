@@ -59,8 +59,14 @@ final class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let mainVC = flowDI.makeMainViewController()
+        let actions = MainViewModelAction(showDetailView: showDetailView)
+        let mainVC = flowDI.makeMainViewController(actions: actions)
         self.presenter.pushViewController(mainVC, animated: true)
         
+    }
+    
+    func showDetailView(product: ProductEntities) {
+        let detailVC = flowDI.makeDetailViewController()
+        self.presenter.pushViewController(detailVC, animated: true)
     }
 }
