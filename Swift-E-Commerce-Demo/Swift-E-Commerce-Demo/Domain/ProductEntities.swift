@@ -13,9 +13,9 @@ struct ProductEntities: Codable {
     var productName: String
     var productBrand: String
     var productImage: String
-    var productCost: String
-    var productPrice: String
-    var productDiscount: String
+    var productCost: Int
+    var productPrice: Int
+    var productDiscount: Int
     
     private enum CodingKeys: String, CodingKey {
         case productDivision = "t"
@@ -33,8 +33,8 @@ struct ProductEntities: Codable {
         productName = try values.decode(String.self, forKey: .productName)
         productBrand = try values.decode(String.self, forKey: .productBrand)
         productImage = try values.decode(String.self, forKey: .productImage)
-        productCost = try values.decode(String.self, forKey: .productCost)
-        productPrice = try values.decode(String.self, forKey: .productPrice)
-        productDiscount = try values.decode(String.self, forKey: .productDiscount)
+        productCost = try values.decode(Int.self, forKey: .productCost)
+        productPrice = try values.decode(Int.self, forKey: .productPrice)
+        productDiscount = try values.decode(Int.self, forKey: .productDiscount)
     }
 }

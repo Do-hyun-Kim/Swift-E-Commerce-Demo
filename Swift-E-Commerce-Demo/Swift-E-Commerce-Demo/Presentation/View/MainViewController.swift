@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class MainViewController: UIViewController {
     
     private var viewModel: MainViewModel!
+    private let disposeBag: DisposeBag = DisposeBag()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView: UICollectionView = UICollectionView(frame: .zero)
+        return collectionView
+    }()
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -30,6 +37,14 @@ class MainViewController: UIViewController {
 
     private func configure() {
         view.backgroundColor = .white
+        
+        viewModel.viewDidload {
+            viewModel.items
+                .withUnretained(self)
+                .subscribe { (vc, _) in
+                    vc.collectionView.reloadData()
+                }.disposed(by: disposeBag)
+        }
     }
 }
 
