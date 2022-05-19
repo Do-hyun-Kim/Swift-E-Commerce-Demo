@@ -10,6 +10,7 @@ import RxSwift
 
 protocol MainUseCase {
     func execute(completion: @escaping(([ProductEntities]) -> Void))
+    func executeDecimalCost(entity: [ProductEntities], at indexPath: IndexPath) -> String
 }
 
 
@@ -26,6 +27,13 @@ final class DefaultMainUseCase: MainUseCase {
             completion(result)
         }
     }
+    
+    func executeDecimalCost(entity: [ProductEntities], at indexPath: IndexPath) -> String {
+        
+        return mainRepository.fetchTransformDecimal(entity: entity, at: indexPath)
+    }
+    
+    
     
     
 }

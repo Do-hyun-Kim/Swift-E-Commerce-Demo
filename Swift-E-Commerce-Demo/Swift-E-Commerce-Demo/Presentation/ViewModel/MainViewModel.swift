@@ -14,7 +14,7 @@ struct MainViewModelAction {
 }
 
 protocol MainViewModelInput {
-    func viewDidload(completion: () -> ())
+    func viewDidload()
     func didSelectItem(at indexPath: IndexPath)
 }
 
@@ -38,12 +38,23 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
         return productItems.isEmpty
     }
     
+    public var numberOfItemsInSection: Int = 0
+    
     init(actions: MainViewModelAction, mainUseCase: MainUseCase) {
         self.actions = actions
         self.mainUseCase = mainUseCase
         
+        items
+            .subscribe { value in
+                self.numberOfItemsInSection = value.element!.count
+            }.disposed(by: disposeBag)
+
+        
     }
     
+    public func setDecimalCost(at indexPath: IndexPath) -> String {
+        return mainUseCase.executeDecimalCost(entity: productItems, at: indexPath)
+    }
     
 }
 
@@ -53,11 +64,10 @@ extension MainViewModel {
     
     //MARK: - INPUT
     
-    func viewDidload(completion: () -> ()) {
+    func viewDidload() {
         mainUseCase.execute { [weak self] result in
-            self?.items.onNext(result)
+            self?.productItems = result
         }
-        completion()
     }
     
     func didSelectItem(at indexPath: IndexPath) {

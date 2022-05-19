@@ -26,6 +26,7 @@
 		FFE8540B2834C308008A5381 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8540A2834C308008A5381 /* DetailViewController.swift */; };
 		FFE8540D2834C871008A5381 /* MainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8540C2834C871008A5381 /* MainUseCase.swift */; };
 		FFE8540F2834DBE6008A5381 /* MainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8540E2834DBE6008A5381 /* MainRepository.swift */; };
+		FFE85412283626CD008A5381 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE85411283626CD008A5381 /* MainCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		FFE8540A2834C308008A5381 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FFE8540C2834C871008A5381 /* MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUseCase.swift; sourceTree = "<group>"; };
 		FFE8540E2834DBE6008A5381 /* MainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
+		FFE85411283626CD008A5381 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		FFE853F32833CB82008A5381 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FFE85410283626BC008A5381 /* Cell */,
 				FFE853C12833C8D4008A5381 /* MainViewController.swift */,
 				FFE8540A2834C308008A5381 /* DetailViewController.swift */,
 			);
@@ -240,6 +243,14 @@
 				FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */,
 			);
 			path = FlowDI;
+			sourceTree = "<group>";
+		};
+		FFE85410283626BC008A5381 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FFE85411283626CD008A5381 /* MainCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +399,7 @@
 				FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */,
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
 				FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */,
+				FFE85412283626CD008A5381 /* MainCollectionViewCell.swift in Sources */,
 				FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */,
 				FFE8540B2834C308008A5381 /* DetailViewController.swift in Sources */,
 				FFE8540D2834C871008A5381 /* MainUseCase.swift in Sources */,

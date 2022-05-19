@@ -29,7 +29,7 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testFlowDIViewModel() {
+    func test_FlowDIViewModel() {
         //given
         let actions = MainViewModelAction(showDetailView: testDetailView)
         
@@ -42,7 +42,7 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     }
     
     
-    func testProductList() {
+    func test_ProductList() {
         //MARK: Product List Test Code
         //given
         let actions = MainViewModelAction(showDetailView: testDetailView)

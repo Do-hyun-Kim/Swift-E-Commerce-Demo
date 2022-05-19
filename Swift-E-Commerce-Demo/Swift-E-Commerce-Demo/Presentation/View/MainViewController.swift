@@ -14,7 +14,11 @@ class MainViewController: UIViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView: UICollectionView = UICollectionView(frame: .zero)
+        let flowLayout = UICollectionViewFlowLayout()
+        let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -37,14 +41,31 @@ class MainViewController: UIViewController {
 
     private func configure() {
         view.backgroundColor = .white
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        viewModel.viewDidload {
-            viewModel.items
-                .withUnretained(self)
-                .subscribe { (vc, _) in
-                    vc.collectionView.reloadData()
-                }.disposed(by: disposeBag)
-        }
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        viewModel.viewDidload()
     }
 }
 
+
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItemsInSection
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.reuseIdentifier, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell()}
+    
+        cell.bindCell(viewModel: viewModel, at: indexPath)
+        
+        return cell
+    }
+}

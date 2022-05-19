@@ -9,6 +9,7 @@ import Foundation
 
 protocol MainRepository {
     func fetchMainProductList(complection:  @escaping(([ProductEntities]) -> Void))
+    func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String
 }
 
 final class DefaultMainRepository: MainRepository {
@@ -23,4 +24,12 @@ final class DefaultMainRepository: MainRepository {
             debugPrint(error.localizedDescription)
         }
     }
+    
+    func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String {
+        let decimalFormatter = NumberFormatter()
+        decimalFormatter.numberStyle = .decimal
+        let result = decimalFormatter.string(from: NSNumber(value:entity[indexPath.item].productCost))! + "원"
+        return result
+    }
+    
 }
