@@ -27,7 +27,7 @@ protocol MainViewModelOutput {
 final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     
     //MARK: - OUTPUT
-    let items: BehaviorSubject<[ProductEntities]> = .init(value: [])
+    let items: BehaviorSubject<[ProductEntities]> = BehaviorSubject(value: [])
     
     let disposeBag: DisposeBag = DisposeBag()
     private let actions: MainViewModelAction?
@@ -46,15 +46,19 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
         
         items
             .subscribe { value in
-                self.numberOfItemsInSection = value.element!.count
+                self.productItems = value.element ?? []
+                self.numberOfItemsInSection = value.element?.count ?? 0
             }.disposed(by: disposeBag)
-
         
     }
     
     public func setDecimalCost(at indexPath: IndexPath) -> String {
         return mainUseCase.executeDecimalCost(entity: productItems, at: indexPath)
     }
+    
+//    public func setImageData(at indexPath: IndexPath) -> Observable<Data> {
+////        return
+//    }
     
 }
 
@@ -66,7 +70,7 @@ extension MainViewModel {
     
     func viewDidload() {
         mainUseCase.execute { [weak self] result in
-            self?.productItems = result
+            self?.items.onNext(result)
         }
     }
     

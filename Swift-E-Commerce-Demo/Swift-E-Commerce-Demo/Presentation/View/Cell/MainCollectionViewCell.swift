@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 
 class MainCollectionViewCell: UICollectionViewCell {
@@ -17,6 +19,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         $0.contentMode = .scaleToFill
         $0.layer.cornerRadius = 5
         $0.layer.masksToBounds = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
         
         return $0
     }(UIImageView())
@@ -48,6 +51,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +62,13 @@ class MainCollectionViewCell: UICollectionViewCell {
         [productImageView,productBrandLabel,productNameLabel].forEach {
             addSubview($0)
         }
+        
+        productImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        productImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        productImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        productImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        productImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
     }
     
     public func bindCell(viewModel: MainViewModel, at indexPath: IndexPath) {

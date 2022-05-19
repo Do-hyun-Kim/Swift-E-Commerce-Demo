@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol MainRepository {
     func fetchMainProductList(complection:  @escaping(([ProductEntities]) -> Void))
     func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String
+    
+//    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath) -> Observable<Data>
 }
 
 final class DefaultMainRepository: MainRepository {
@@ -32,4 +35,8 @@ final class DefaultMainRepository: MainRepository {
         return result
     }
     
+    
 }
+
+
+

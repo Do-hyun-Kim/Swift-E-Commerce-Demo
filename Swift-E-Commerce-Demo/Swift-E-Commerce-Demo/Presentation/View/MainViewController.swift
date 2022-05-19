@@ -15,7 +15,10 @@ class MainViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 150, height: 150)
+        flowLayout.minimumInteritemSpacing = 10
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .white
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
