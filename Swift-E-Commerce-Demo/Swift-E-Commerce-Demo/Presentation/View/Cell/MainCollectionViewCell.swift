@@ -73,7 +73,6 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     public func bindCell(viewModel: MainViewModel, at indexPath: IndexPath) {
         print(viewModel.setDecimalCost(at: indexPath))
-        
     }
     
 }

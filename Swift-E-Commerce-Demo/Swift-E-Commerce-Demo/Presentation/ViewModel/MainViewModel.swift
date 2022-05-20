@@ -30,9 +30,9 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     let items: BehaviorSubject<[ProductEntities]> = BehaviorSubject(value: [])
     
     let disposeBag: DisposeBag = DisposeBag()
-    private let actions: MainViewModelAction?
-    private let mainUseCase: MainUseCase
-    private var productItems: [ProductEntities] = []
+    public let actions: MainViewModelAction?
+    public let mainUseCase: MainUseCase
+    public var productItems: [ProductEntities] = []
     
     var isEmpty: Bool {
         return productItems.isEmpty
@@ -56,9 +56,9 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
         return mainUseCase.executeDecimalCost(entity: productItems, at: indexPath)
     }
     
-//    public func setImageData(at indexPath: IndexPath) -> Observable<Data> {
-////        return
-//    }
+    public func setImageData(at indexPath: IndexPath) {
+        return mainUseCase.executeimage(entity: productItems, at: indexPath)
+    }
     
 }
 

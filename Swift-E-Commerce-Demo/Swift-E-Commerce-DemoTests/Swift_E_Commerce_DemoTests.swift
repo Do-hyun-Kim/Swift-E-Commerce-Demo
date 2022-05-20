@@ -54,7 +54,20 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         }
         
         //then
-        XCTAssertNotNil(testProductList, "testProductList Value Not Nil")
+        XCTAssertNotNil(viewModel.items, "testProductList Value Not Nil")
+    }
+    
+    func test_TransfromImage() {
+        //given
+        
+        let actions = MainViewModelAction(showDetailView: testDetailView)
+        viewModel = flowDI.makeMainViewModel(actions: actions)
+        
+        //when
+        let testImage = viewModel.mainUseCase.executeimage(entity: viewModel.productItems, at: IndexPath(item: 0, section: 0))
+        
+        //then
+        XCTAssertNoThrow(testImage, "Throw Image")
     }
     
     func testDetailView(product: ProductEntities) {}

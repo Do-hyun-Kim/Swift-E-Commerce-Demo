@@ -11,6 +11,7 @@ import RxSwift
 protocol MainRepository {
     func fetchMainProductList(complection:  @escaping(([ProductEntities]) -> Void))
     func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String
+    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath)
     
 //    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath) -> Observable<Data>
 }
@@ -33,6 +34,14 @@ final class DefaultMainRepository: MainRepository {
         decimalFormatter.numberStyle = .decimal
         let result = decimalFormatter.string(from: NSNumber(value:entity[indexPath.item].productCost))! + "원"
         return result
+    }
+    
+    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath) {
+        
+        let urlReuqest = URLRequest(url: URL(string: entity[indexPath.item].productImage)!)
+        URLSession.shared.dataTask(with: urlReuqest) { data, response, error in
+            
+        }.resume()
     }
     
     
