@@ -9,21 +9,19 @@ import Foundation
 import RxSwift
 
 protocol MainRepository {
-    func fetchMainProductList(complection:  @escaping(([ProductEntities]) -> Void))
+    func fetchMainProductList(completion:  @escaping(([ProductEntities]) -> Void))
     func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String
-    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath)
-    
-//    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath) -> Observable<Data>
+    func fetchTransformImage(entity: String) -> Data
 }
 
 final class DefaultMainRepository: MainRepository {
     
-    func fetchMainProductList(complection: @escaping (([ProductEntities]) -> Void)) {
+    func fetchMainProductList(completion: @escaping (([ProductEntities]) -> Void)) {
         do {
             let decoder = JSONDecoder()
             guard let bundle = Bundle.main.url(forResource: "product_list", withExtension: "json") else { return }
             let productData = try decoder.decode([ProductEntities].self, from: Data(contentsOf: bundle))
-            complection(productData)
+            completion(productData)
         } catch {
             debugPrint(error.localizedDescription)
         }
@@ -36,13 +34,13 @@ final class DefaultMainRepository: MainRepository {
         return result
     }
     
-    func fetchTransformImage(entity: [ProductEntities], at indexPath: IndexPath) {
-        
-        let urlReuqest = URLRequest(url: URL(string: entity[indexPath.item].productImage)!)
-        URLSession.shared.dataTask(with: urlReuqest) { data, response, error in
-            
-        }.resume()
+    func fetchTransformImage(entity: String) -> Data {
+        //Transfrom String -> Data
+        <#code#>
     }
+    
+    
+    
     
     
 }

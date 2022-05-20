@@ -34,14 +34,9 @@ final class DefaultMainUseCase: MainUseCase {
         return mainRepository.fetchTransformDecimal(entity: entity, at: indexPath)
     }
     
-    func executeimage(entity: [ProductEntities], at indexPath: IndexPath) {
-        return mainRepository.fetchTransformImage(entity: entity, at: indexPath)
+    func executeimage(entity: [ProductEntities], at indexpath: IndexPath) {
+        mainRepository.fetchTransformImage(entity: entity[indexpath.item].productImage)
     }
-    
-//    func executeImageData(entity: [ProductEntities], at indexpath: IndexPath) -> Observable<Data> {
-//        return
-//    }
-    
     
     
     
