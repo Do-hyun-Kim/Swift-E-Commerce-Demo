@@ -11,7 +11,7 @@ import RxSwift
 protocol MainRepository {
     func fetchMainProductList(completion:  @escaping(([ProductEntities]) -> Void))
     func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String
-    func fetchTransformImage(entity: String) -> Data
+    func fetchTransformImage(entity: String) -> Observable<Data>
 }
 
 final class DefaultMainRepository: MainRepository {
@@ -34,13 +34,31 @@ final class DefaultMainRepository: MainRepository {
         return result
     }
     
-    func fetchTransformImage(entity: String) -> Data {
-        //Transfrom String -> Data
-        <#code#>
+    func fetchTransformImage(entity: String) -> Observable<Data> {
+        return Observable<Data>.create { [weak self] observer in
+            self?.transformData(entity: entity) { data in
+                print("Data Value \(data)")
+                observer.onNext(data)
+            }
+            return Disposables.create()
+        }
     }
     
     
-    
+    private func transformData(entity: String, completion: @escaping(Data) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let url: URL = URL(string: entity) else { return }
+            let urlRequest: URLRequest = URLRequest(url: url)
+            URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+                if let data = data {
+                    completion(data)
+                    return
+                }
+                debugPrint(error?.localizedDescription as Any)
+            }.resume()
+        }
+        
+    }
     
     
 }

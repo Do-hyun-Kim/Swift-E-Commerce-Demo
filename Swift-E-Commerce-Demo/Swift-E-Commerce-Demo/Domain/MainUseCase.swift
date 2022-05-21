@@ -11,7 +11,7 @@ import RxSwift
 protocol MainUseCase {
     func execute(completion: @escaping(([ProductEntities]) -> Void))
     func executeDecimalCost(entity: [ProductEntities], at indexPath: IndexPath) -> String
-    func executeimage(entity: [ProductEntities], at indexpath: IndexPath)
+    func executeImageData(entity: String) -> Observable<Data>
 }
 
 
@@ -34,11 +34,9 @@ final class DefaultMainUseCase: MainUseCase {
         return mainRepository.fetchTransformDecimal(entity: entity, at: indexPath)
     }
     
-    //TODO: UseCase Parameter값 수정 -> entity 값 UseCase에 접근은 가능하나 Image 처리만을 위한 String으로 지정하는것이 적합
-    func executeimage(entity: [ProductEntities], at indexpath: IndexPath) {
-        mainRepository.fetchTransformImage(entity: entity[indexpath.item].productImage)
+    func executeImageData(entity: String) -> Observable<Data> {
+        return mainRepository.fetchTransformImage(entity: entity)
     }
-    
     
     
 }
