@@ -10,7 +10,7 @@ import RxSwift
 
 protocol MainUseCase {
     func execute(completion: @escaping(([ProductEntities]) -> Void))
-    func executeDecimalCost(entity: [ProductEntities], at indexPath: IndexPath) -> String
+    func executeDecimalCost(entity: Int) -> String
     func executeImageData(entity: String) -> Observable<Data>
 }
 
@@ -29,9 +29,8 @@ final class DefaultMainUseCase: MainUseCase {
         }
     }
     
-    func executeDecimalCost(entity: [ProductEntities], at indexPath: IndexPath) -> String {
-        
-        return mainRepository.fetchTransformDecimal(entity: entity, at: indexPath)
+    func executeDecimalCost(entity: Int) -> String {
+        return mainRepository.fetchTransformDecimal(entity: entity)
     }
     
     func executeImageData(entity: String) -> Observable<Data> {

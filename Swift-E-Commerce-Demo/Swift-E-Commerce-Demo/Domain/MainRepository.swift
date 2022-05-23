@@ -10,7 +10,7 @@ import RxSwift
 
 protocol MainRepository {
     func fetchMainProductList(completion:  @escaping(([ProductEntities]) -> Void))
-    func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String
+    func fetchTransformDecimal(entity: Int) -> String
     func fetchTransformImage(entity: String) -> Observable<Data>
 }
 
@@ -27,10 +27,10 @@ final class DefaultMainRepository: MainRepository {
         }
     }
     
-    func fetchTransformDecimal(entity: [ProductEntities], at indexPath: IndexPath) -> String {
+    func fetchTransformDecimal(entity: Int) -> String {
         let decimalFormatter = NumberFormatter()
         decimalFormatter.numberStyle = .decimal
-        let result = decimalFormatter.string(from: NSNumber(value:entity[indexPath.item].productCost))! + "원"
+        let result = decimalFormatter.string(from: NSNumber(value: entity))! + "원"
         return result
     }
     

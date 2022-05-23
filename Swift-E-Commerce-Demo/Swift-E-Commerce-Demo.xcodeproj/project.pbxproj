@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FFAC2EFE283B92AD009868E8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC2EFD283B92AD009868E8 /* ImageCache.swift */; };
+		FFAC2F01283BAD21009868E8 /* BannerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC2F00283BAD21009868E8 /* BannerCollectionView.swift */; };
 		FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853BD2833C8D4008A5381 /* AppDelegate.swift */; };
 		FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */; };
 		FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853C12833C8D4008A5381 /* MainViewController.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FFAC2EFD283B92AD009868E8 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		FFAC2F00283BAD21009868E8 /* BannerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionView.swift; sourceTree = "<group>"; };
 		FFE853BA2833C8D4008A5381 /* Swift-E-Commerce-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-E-Commerce-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE853BD2833C8D4008A5381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FFAC2EFC283B927A009868E8 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC2EFD283B92AD009868E8 /* ImageCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		FFAC2EFF283BAD0A009868E8 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				FFAC2F00283BAD21009868E8 /* BannerCollectionView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		FFE853B12833C8D4008A5381 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +181,7 @@
 		FFE853F12833CB68008A5381 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FFAC2EFC283B927A009868E8 /* Cache */,
 				FFE853FC2833D5B7008A5381 /* FlowDI */,
 				FFE853F92833D504008A5381 /* Coordinator */,
 				FFE853F32833CB82008A5381 /* View */,
@@ -180,6 +201,7 @@
 		FFE853F32833CB82008A5381 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FFAC2EFF283BAD0A009868E8 /* Component */,
 				FFE85410283626BC008A5381 /* Cell */,
 				FFE853C12833C8D4008A5381 /* MainViewController.swift */,
 				FFE8540A2834C308008A5381 /* DetailViewController.swift */,
@@ -398,6 +420,8 @@
 				FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */,
 				FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */,
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
+				FFAC2F01283BAD21009868E8 /* BannerCollectionView.swift in Sources */,
+				FFAC2EFE283B92AD009868E8 /* ImageCache.swift in Sources */,
 				FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */,
 				FFE85412283626CD008A5381 /* MainCollectionViewCell.swift in Sources */,
 				FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */,

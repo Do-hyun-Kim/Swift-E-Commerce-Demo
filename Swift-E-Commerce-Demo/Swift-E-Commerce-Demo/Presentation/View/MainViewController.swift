@@ -11,6 +11,7 @@ import RxSwift
 class MainViewController: UIViewController {
     
     private var viewModel: MainViewModel!
+    private var bannerFlow: BannerFlow!
     private let disposeBag: DisposeBag = DisposeBag()
     
     private lazy var collectionView: UICollectionView = {
@@ -20,13 +21,13 @@ class MainViewController: UIViewController {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = .white
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-    init(viewModel: MainViewModel) {
+    init(viewModel: MainViewModel, bannerFlow: BannerFlow) {
         self.viewModel = viewModel
+        self.bannerFlow = bannerFlow
         super.init(nibName: nil, bundle: nil)
     }
     

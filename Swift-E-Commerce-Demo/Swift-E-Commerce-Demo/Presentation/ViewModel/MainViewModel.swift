@@ -53,7 +53,7 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     }
     
     public func setDecimalCost(at indexPath: IndexPath) -> String {
-        return mainUseCase.executeDecimalCost(entity: productItems, at: indexPath)
+        return mainUseCase.executeDecimalCost(entity: productItems[indexPath.item].productCost)
     }
     
     public func setTransformImage(at indexPath: IndexPath, completion: @escaping(Data) -> Void ) {
