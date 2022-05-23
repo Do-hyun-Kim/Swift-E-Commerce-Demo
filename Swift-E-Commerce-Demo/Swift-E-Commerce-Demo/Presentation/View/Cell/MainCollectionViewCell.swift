@@ -73,7 +73,12 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     public func bindCell(viewModel: MainViewModel, at indexPath: IndexPath) {
         print(viewModel.setDecimalCost(at: indexPath))
-        print("Cell Image Transform \(viewModel.setTransformImage(at: indexPath))")
+        viewModel.setTransformImage(at: indexPath) { [weak self] element in
+            guard let `self` = self else { return }
+            DispatchQueue.main.async {
+                self.productImageView.image = UIImage(data: element)
+            }
+        }
     }
     
 }

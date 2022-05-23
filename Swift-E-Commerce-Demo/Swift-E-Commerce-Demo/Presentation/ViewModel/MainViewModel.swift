@@ -32,7 +32,6 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     let disposeBag: DisposeBag = DisposeBag()
     private let actions: MainViewModelAction?
     private let mainUseCase: MainUseCase
-    private var imageData: Data?
     private var productItems: [ProductEntities] = []
     
     var isEmpty: Bool {
@@ -57,12 +56,11 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
         return mainUseCase.executeDecimalCost(entity: productItems, at: indexPath)
     }
     
-    public func setTransformImage(at indexPath: IndexPath) {
+    public func setTransformImage(at indexPath: IndexPath, completion: @escaping(Data) -> Void ) {
         mainUseCase.executeImageData(entity: productItems[indexPath.item].productImage)
             .asObservable()
             .subscribe { event in
-                print("Image Data \(event.element)")
-                self.imageData = event.element ?? Data()
+                completion(event.element ?? Data())
             }.disposed(by: disposeBag)
     }
     

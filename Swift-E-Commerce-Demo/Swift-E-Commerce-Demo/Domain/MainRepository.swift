@@ -37,7 +37,6 @@ final class DefaultMainRepository: MainRepository {
     func fetchTransformImage(entity: String) -> Observable<Data> {
         return Observable<Data>.create { [weak self] observer in
             self?.transformData(entity: entity) { data in
-                print("Data Value \(data)")
                 observer.onNext(data)
             }
             return Disposables.create()
