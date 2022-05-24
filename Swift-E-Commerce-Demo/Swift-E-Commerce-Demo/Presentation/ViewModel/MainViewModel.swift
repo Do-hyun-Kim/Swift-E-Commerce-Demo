@@ -16,6 +16,7 @@ struct MainViewModelAction {
 protocol MainViewModelInput {
     func viewDidload()
     func didSelectItem(at indexPath: IndexPath)
+    func numberOfSections() -> Int
 }
 
 protocol MainViewModelOutput {
@@ -38,6 +39,10 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
         return productItems.isEmpty
     }
     
+    enum MainSection: CaseIterable {
+        case Banner
+        case Product
+    }
     public var numberOfItemsInSection: Int = 0
     
     init(actions: MainViewModelAction, mainUseCase: MainUseCase) {
@@ -71,6 +76,10 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
 extension MainViewModel {
     
     //MARK: - INPUT
+    
+    func numberOfSections() -> Int {
+        return MainSection.allCases.count
+    }
     
     func viewDidload() {
         mainUseCase.execute { [weak self] result in

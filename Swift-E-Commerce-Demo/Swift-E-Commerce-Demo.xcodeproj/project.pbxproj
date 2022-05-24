@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FFAC2EFE283B92AD009868E8 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC2EFD283B92AD009868E8 /* ImageCache.swift */; };
-		FFAC2F01283BAD21009868E8 /* BannerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC2F00283BAD21009868E8 /* BannerCollectionView.swift */; };
+		FFAC2F03283CABC4009868E8 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC2F02283CABC4009868E8 /* BannerCollectionViewCell.swift */; };
 		FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853BD2833C8D4008A5381 /* AppDelegate.swift */; };
 		FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */; };
 		FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853C12833C8D4008A5381 /* MainViewController.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		FFAC2EFD283B92AD009868E8 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		FFAC2F00283BAD21009868E8 /* BannerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionView.swift; sourceTree = "<group>"; };
+		FFAC2F02283CABC4009868E8 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFE853BA2833C8D4008A5381 /* Swift-E-Commerce-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-E-Commerce-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE853BD2833C8D4008A5381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFE853BF2833C8D4008A5381 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,12 +110,12 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
-		FFAC2EFF283BAD0A009868E8 /* Component */ = {
+		FFAC2F04283CACF6009868E8 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC2F00283BAD21009868E8 /* BannerCollectionView.swift */,
+				FFE853ED2833C926008A5381 /* product_list.json */,
 			);
-			path = Component;
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		FFE853B12833C8D4008A5381 = {
@@ -141,13 +141,13 @@
 		FFE853BC2833C8D4008A5381 /* Swift-E-Commerce-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				FFAC2F04283CACF6009868E8 /* Mock */,
 				FFE853EF2833CB25008A5381 /* Applications */,
 				FFE853F42833CB88008A5381 /* Domain */,
 				FFE853F12833CB68008A5381 /* Presentation */,
 				FFE853C62833C8DA008A5381 /* Assets.xcassets */,
 				FFE853C82833C8DA008A5381 /* LaunchScreen.storyboard */,
 				FFE853CB2833C8DA008A5381 /* Info.plist */,
-				FFE853ED2833C926008A5381 /* product_list.json */,
 			);
 			path = "Swift-E-Commerce-Demo";
 			sourceTree = "<group>";
@@ -201,7 +201,6 @@
 		FFE853F32833CB82008A5381 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC2EFF283BAD0A009868E8 /* Component */,
 				FFE85410283626BC008A5381 /* Cell */,
 				FFE853C12833C8D4008A5381 /* MainViewController.swift */,
 				FFE8540A2834C308008A5381 /* DetailViewController.swift */,
@@ -271,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				FFE85411283626CD008A5381 /* MainCollectionViewCell.swift */,
+				FFAC2F02283CABC4009868E8 /* BannerCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -419,8 +419,8 @@
 				FFE853FB2833D517008A5381 /* AppCoordinator.swift in Sources */,
 				FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */,
 				FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */,
+				FFAC2F03283CABC4009868E8 /* BannerCollectionViewCell.swift in Sources */,
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
-				FFAC2F01283BAD21009868E8 /* BannerCollectionView.swift in Sources */,
 				FFAC2EFE283B92AD009868E8 /* ImageCache.swift in Sources */,
 				FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */,
 				FFE85412283626CD008A5381 /* MainCollectionViewCell.swift in Sources */,

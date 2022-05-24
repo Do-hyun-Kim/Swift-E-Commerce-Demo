@@ -15,7 +15,6 @@ protocol PresenterDI {
     func makeDetailViewController() -> DetailViewController
     func makeMainUseCase() -> MainUseCase
     func makeMainRepository() -> MainRepository
-    func makeBannerFlowDI() -> BannerFlow
 }
 
 
@@ -27,7 +26,7 @@ class AppFlowDI: PresenterDI {
     }
     
     func makeMainViewController(actions: MainViewModelAction) -> MainViewController {
-        let mainViewController = MainViewController(viewModel: makeMainViewModel(actions: actions), bannerFlow: makeBannerFlowDI())
+        let mainViewController = MainViewController(viewModel: makeMainViewModel(actions: actions))
         mainViewController.title = "상품 정보"
         return mainViewController
     }
@@ -55,10 +54,5 @@ class AppFlowDI: PresenterDI {
     func makeDetailViewController() -> DetailViewController {
         let detailViewController = DetailViewController()
         return detailViewController
-    }
-    
-    func makeBannerFlowDI() -> BannerFlow {
-        let bannerView = BannerCollectionView()
-        return bannerView
     }
 }

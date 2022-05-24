@@ -8,6 +8,12 @@
 import Foundation
 
 
+struct MainEntity: Codable {
+    var banner_Info: [String]
+    var info: [ProductEntities]
+}
+
+
 struct ProductEntities: Codable {
     var productDivision: String
     var productName: String
