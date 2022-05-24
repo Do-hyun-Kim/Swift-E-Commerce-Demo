@@ -20,8 +20,7 @@ protocol MainViewModelInput {
 }
 
 protocol MainViewModelOutput {
-    var items: Observable<MainEntity> {get}
-    var isEmpty: Bool {get}
+
 }
 
 
@@ -32,35 +31,38 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     let disposeBag: DisposeBag = DisposeBag()
     private let actions: MainViewModelAction?
     private let mainUseCase: MainUseCase
-    let items: Observable<MainEntity>
-    private var productItems: [ProductEntities] = []
-    
-    var isEmpty: Bool {
-        return productItems.isEmpty
-    }
+    public var productItems: MainEntity?
     
     enum MainSection: CaseIterable {
-        case Banner
-        case Product
+        case banner
+        case product
     }
-    public var numberOfItemsInSection: Int = 0
     
     init(actions: MainViewModelAction, mainUseCase: MainUseCase) {
         self.actions = actions
         self.mainUseCase = mainUseCase
-        self.items = mainUseCase.execute()
     }
     
     public func setDecimalCost(at indexPath: IndexPath) -> String {
-        return mainUseCase.executeDecimalCost(entity: productItems[indexPath.item].productCost)
+        return mainUseCase.executeDecimalCost(entity: productItems!.info[indexPath.item].productCost)
+        
     }
     
     public func setTransformImage(at indexPath: IndexPath, completion: @escaping(Data) -> Void ) {
-        mainUseCase.executeImageData(entity: productItems[indexPath.item].productImage)
+        mainUseCase.executeImageData(entity: productItems!.info[indexPath.item].productImage)
             .asObservable()
             .subscribe { event in
                 completion(event.element ?? Data())
             }.disposed(by: disposeBag)
+    }
+    
+    public func numberOfItemsInSection(section: Int) -> Int {
+        switch MainSection.allCases[section] {
+        case .banner:
+            return productItems?.banner_Info.count ?? 0
+        case .product:
+            return productItems?.info.count ?? 0
+        }
     }
     
 }
@@ -76,17 +78,14 @@ extension MainViewModel {
     }
     
     func viewDidload() {
-        items
-            .asObservable()
-            .filter{$0.info.isEmpty}
+        mainUseCase.execute()
             .subscribe { event in
-                self.productItems = event.element?.info ?? []
-                self.numberOfItemsInSection = event.element?.info.count ?? 0
+                self.productItems = event.element
             }.disposed(by: disposeBag)
     }
     
     func didSelectItem(at indexPath: IndexPath) {
-        actions?.showDetailView(productItems[indexPath.item])
+        actions?.showDetailView(productItems!.info[indexPath.item])
     }
     
     

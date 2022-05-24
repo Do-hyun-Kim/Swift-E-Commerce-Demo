@@ -23,7 +23,6 @@ final class DefaultMainRepository: MainRepository {
                 if let bundle = Bundle.main.url(forResource: "product_list", withExtension: "json") {
                     let productData = try decoder.decode(MainEntity.self, from: Data(contentsOf: bundle))
                     observer.onNext(productData)
-                    observer.onCompleted()
                 }
             } catch {
                 observer.onError(error)

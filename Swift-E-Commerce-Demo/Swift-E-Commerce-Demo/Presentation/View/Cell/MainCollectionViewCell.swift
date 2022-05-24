@@ -63,6 +63,7 @@ class MainCollectionViewCell: UICollectionViewCell {
             addSubview($0)
         }
         
+        self.backgroundColor = .systemPink
         productImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         productImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         productImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
