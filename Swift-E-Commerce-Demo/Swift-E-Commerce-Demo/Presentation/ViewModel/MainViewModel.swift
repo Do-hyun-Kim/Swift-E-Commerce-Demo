@@ -20,7 +20,7 @@ protocol MainViewModelInput {
 }
 
 protocol MainViewModelOutput {
-    var items: BehaviorSubject<[ProductEntities]> {get}
+    var items: Observable<MainEntity> {get}
     var isEmpty: Bool {get}
 }
 
@@ -28,11 +28,11 @@ protocol MainViewModelOutput {
 final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     
     //MARK: - OUTPUT
-    let items: BehaviorSubject<[ProductEntities]> = BehaviorSubject(value: [])
-    
+
     let disposeBag: DisposeBag = DisposeBag()
     private let actions: MainViewModelAction?
     private let mainUseCase: MainUseCase
+    let items: Observable<MainEntity>
     private var productItems: [ProductEntities] = []
     
     var isEmpty: Bool {
@@ -48,13 +48,7 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     init(actions: MainViewModelAction, mainUseCase: MainUseCase) {
         self.actions = actions
         self.mainUseCase = mainUseCase
-        
-        items
-            .subscribe { value in
-                self.productItems = value.element ?? []
-                self.numberOfItemsInSection = value.element?.count ?? 0
-            }.disposed(by: disposeBag)
-        
+        self.items = mainUseCase.execute()
     }
     
     public func setDecimalCost(at indexPath: IndexPath) -> String {
@@ -82,9 +76,13 @@ extension MainViewModel {
     }
     
     func viewDidload() {
-        mainUseCase.execute { [weak self] result in
-            self?.items.onNext(result)
-        }
+        items
+            .asObservable()
+            .filter{$0.info.isEmpty}
+            .subscribe { event in
+                self.productItems = event.element?.info ?? []
+                self.numberOfItemsInSection = event.element?.info.count ?? 0
+            }.disposed(by: disposeBag)
     }
     
     func didSelectItem(at indexPath: IndexPath) {

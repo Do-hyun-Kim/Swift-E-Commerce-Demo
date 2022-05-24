@@ -70,10 +70,14 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         XCTAssertNoThrow(testImage, "Throw Image")
     }
     
+    func test_BannerList() {
+        
+    }
+    
     func testDetailView(product: ProductEntities) {}
     
     
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

@@ -9,21 +9,26 @@ import Foundation
 import RxSwift
 
 protocol MainRepository {
-    func fetchMainProductList(completion:  @escaping(([ProductEntities]) -> Void))
+    func fetchMainProductList() -> Observable<MainEntity>
     func fetchTransformDecimal(entity: Int) -> String
     func fetchTransformImage(entity: String) -> Observable<Data>
 }
 
 final class DefaultMainRepository: MainRepository {
     
-    func fetchMainProductList(completion: @escaping (([ProductEntities]) -> Void)) {
-        do {
-            let decoder = JSONDecoder()
-            guard let bundle = Bundle.main.url(forResource: "product_list", withExtension: "json") else { return }
-            let productData = try decoder.decode([ProductEntities].self, from: Data(contentsOf: bundle))
-            completion(productData)
-        } catch {
-            debugPrint(error.localizedDescription)
+    func fetchMainProductList() -> Observable<MainEntity> {
+        return Observable<MainEntity>.create { observer in
+            do {
+                let decoder = JSONDecoder()
+                if let bundle = Bundle.main.url(forResource: "product_list", withExtension: "json") {
+                    let productData = try decoder.decode(MainEntity.self, from: Data(contentsOf: bundle))
+                    observer.onNext(productData)
+                    observer.onCompleted()
+                }
+            } catch {
+                observer.onError(error)
+            }
+            return Disposables.create()
         }
     }
     
