@@ -51,7 +51,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     }(UILabel())
     
     private var productCostLabel: UILabel = {
-        $0.font = .boldSystemFont(ofSize: 11)
+        $0.font = .boldSystemFont(ofSize: 13)
         $0.textColor = .black
         $0.numberOfLines = 1
         $0.textAlignment = .left
@@ -69,7 +69,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
-        [productImageView,productBrandLabel,productNameLabel,productDiscountLabel].forEach {
+        [productImageView,productBrandLabel,productNameLabel,productDiscountLabel,productCostLabel].forEach {
             self.contentView.addSubview($0)
         }
         
@@ -92,7 +92,13 @@ class MainCollectionViewCell: UICollectionViewCell {
         
         productDiscountLabel.snp.makeConstraints {
             $0.top.equalTo(productNameLabel.snp.bottom).offset(3)
-            $0.left.right.equalTo(productNameLabel)
+            $0.left.equalTo(productNameLabel)
+            $0.height.equalTo(13)
+        }
+        
+        productCostLabel.snp.makeConstraints {
+            $0.top.equalTo(productDiscountLabel)
+            $0.left.equalTo(productDiscountLabel.snp.right).offset(5)
             $0.height.equalTo(13)
         }
         
@@ -107,6 +113,7 @@ class MainCollectionViewCell: UICollectionViewCell {
                 self.productBrandLabel.text = viewModel.productItems!.info[indexPath.item].productBrand
                 self.productNameLabel.text = viewModel.productItems?.info[indexPath.item].productName
                 self.productDiscountLabel.text = "\(viewModel.productItems!.info[indexPath.item].productDiscount)%"
+                self.productCostLabel.text = viewModel.setDecimalCost(at: indexPath)
             }
         }
     }
