@@ -27,7 +27,8 @@ class AppFlowDI: PresenterDI {
     
     func makeMainViewController(actions: MainViewModelAction) -> MainViewController {
         let mainViewController = MainViewController(viewModel: makeMainViewModel(actions: actions))
-        mainViewController.title = "상품 정보"
+        let logoImage: UIImage = UIImage(named: "zigzagLogo") ?? UIImage()
+        mainViewController.navigationItem.titleView = UIImageView(image: logoImage)
         return mainViewController
     }
     

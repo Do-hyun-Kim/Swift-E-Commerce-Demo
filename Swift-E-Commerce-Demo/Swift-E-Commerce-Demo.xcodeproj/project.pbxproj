@@ -22,7 +22,7 @@
 		FFE853EE2833C926008A5381 /* product_list.json in Resources */ = {isa = PBXBuildFile; fileRef = FFE853ED2833C926008A5381 /* product_list.json */; };
 		FFE853FB2833D517008A5381 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FA2833D517008A5381 /* AppCoordinator.swift */; };
 		FFE853FE2833D5C6008A5381 /* AppFlowDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */; };
-		FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FF2833E2B8008A5381 /* ProductEntities.swift */; };
+		FFE854002833E2B8008A5381 /* MainEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE853FF2833E2B8008A5381 /* MainEntity.swift */; };
 		FFE854022833E9BD008A5381 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE854012833E9BD008A5381 /* MainViewModel.swift */; };
 		FFE854052834B990008A5381 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FFE854042834B990008A5381 /* RxCocoa */; };
 		FFE854072834B990008A5381 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = FFE854062834B990008A5381 /* RxRelay */; };
@@ -69,7 +69,7 @@
 		FFE853ED2833C926008A5381 /* product_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = product_list.json; sourceTree = "<group>"; };
 		FFE853FA2833D517008A5381 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FFE853FD2833D5C6008A5381 /* AppFlowDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowDI.swift; sourceTree = "<group>"; };
-		FFE853FF2833E2B8008A5381 /* ProductEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntities.swift; sourceTree = "<group>"; };
+		FFE853FF2833E2B8008A5381 /* MainEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEntity.swift; sourceTree = "<group>"; };
 		FFE854012833E9BD008A5381 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FFE8540A2834C308008A5381 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FFE8540C2834C871008A5381 /* MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUseCase.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		FFE853F52833CBA5008A5381 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				FFE853FF2833E2B8008A5381 /* ProductEntities.swift */,
+				FFE853FF2833E2B8008A5381 /* MainEntity.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -437,7 +437,7 @@
 				FFAC2F03283CABC4009868E8 /* BannerCollectionViewCell.swift in Sources */,
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
 				FFAC2EFE283B92AD009868E8 /* ImageCache.swift in Sources */,
-				FFE854002833E2B8008A5381 /* ProductEntities.swift in Sources */,
+				FFE854002833E2B8008A5381 /* MainEntity.swift in Sources */,
 				FFE85412283626CD008A5381 /* MainCollectionViewCell.swift in Sources */,
 				FFE853C02833C8D4008A5381 /* SceneDelegate.swift in Sources */,
 				FFE8540B2834C308008A5381 /* DetailViewController.swift in Sources */,

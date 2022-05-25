@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 class ProductHeaderView: UICollectionReusableView {
@@ -13,20 +14,23 @@ class ProductHeaderView: UICollectionReusableView {
     static let reuseIdentifier: String = String(describing: self)
     
     private let bestProduct: UILabel = {
-        $0.font = .boldSystemFont(ofSize: 11)
+        $0.font = .boldSystemFont(ofSize: 15)
         $0.textColor = .black
         $0.textAlignment = .left
         $0.numberOfLines = 1
-        
+        $0.text = "당신을 위한 추천 아이템"
         return $0
     }(UILabel())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubview(bestProduct)
+        addSubview(bestProduct)
         bestProduct.snp.makeConstraints {
-            $0.top.left.right.bottom.equalToSuperview()
+            $0.top.equalTo(self).offset(10)
+            $0.width.equalToSuperview()
+            $0.left.equalTo(self).offset(5)
+            $0.height.equalTo(20)
         }
     }
     

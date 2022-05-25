@@ -24,9 +24,9 @@ class MainViewController: UIViewController {
                 }
             })
         
-        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
-        collectionView.register(BannerCollectionViewCell.self, forCellWithReuseIdentifier: BannerCollectionViewCell.reuseIdentifier)
-        collectionView.register(ProductHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductHeaderView.reuseIdentifier)
+        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
+        collectionView.register(BannerCollectionViewCell.self, forCellWithReuseIdentifier: "BannerCollectionViewCell")
+        collectionView.register(ProductHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ProductHeaderView")
         collectionView.clipsToBounds = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = true
@@ -66,12 +66,57 @@ class MainViewController: UIViewController {
         }
     
     }
+}
+
+
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return viewModel.numberOfSections()
+    }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItemsInSection(section: section)
+    }
     
-    private func getLayoutBannerSection() -> NSCollectionLayoutSection {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch MainViewModel.MainSection.allCases[indexPath.section] {
+        case .banner:
+            let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as! BannerCollectionViewCell
+            bannerCell.bindBannerCell(viewModel: viewModel, at: indexPath)
+            
+                return bannerCell
+        case .product:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
+            cell.bindCell(viewModel: viewModel, at: indexPath)
+            
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ProductHeaderView", for: indexPath) as! ProductHeaderView
+            return header
+        default:
+            return UICollectionReusableView()
+        }
+    }
+}
+
+
+
+//Layout
+extension MainViewController {
+    
+    fileprivate func getLayoutBannerSection() -> NSCollectionLayoutSection {
         let itemSize: NSCollectionLayoutSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(200)
+            heightDimension: .absolute(200)
         )
         
         //item
@@ -83,27 +128,28 @@ class MainViewController: UIViewController {
         
         //section
         let section: NSCollectionLayoutSection = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .groupPaging
         
         return section
     }
     
-    private func getLayoutRecommendProductSection() -> NSCollectionLayoutSection {
+    fileprivate func getLayoutRecommendProductSection() -> NSCollectionLayoutSection {
         let itemSize: NSCollectionLayoutSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.5),
+            widthDimension: .absolute(120),
             heightDimension: .fractionalHeight(1.0)
         )
         
         //item
         let item: NSCollectionLayoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = .init(top: 12, leading: 8, bottom: 12, trailing: 8)
+        item.contentInsets = .init(top: 0, leading: 5, bottom: 0, trailing: 5)
         
         //group
         let groupSize: NSCollectionLayoutSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
-            heightDimension: .fractionalHeight(0.3)
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(200)
         )
         let group: NSCollectionLayoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
         //header
         let headerSize: NSCollectionLayoutSize = NSCollectionLayoutSize(
@@ -123,45 +169,5 @@ class MainViewController: UIViewController {
         section.boundarySupplementaryItems = [header]
         
         return section
-    }
-}
-
-
-
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.numberOfSections()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsInSection(section: section)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch MainViewModel.MainSection.allCases[indexPath.section] {
-        case .banner:
-            let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.reuseIdentifier, for: indexPath) as! BannerCollectionViewCell
-//            bannerCell.bindBannerCell(viewModel: viewModel, at: indexPath)
-            
-                return bannerCell
-        case .product:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-//            cell.bindCell(viewModel: viewModel, at: indexPath)
-            
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductHeaderView.reuseIdentifier, for: indexPath) as! ProductHeaderView
-            return header
-        default:
-            return UICollectionReusableView()
-        }
     }
 }

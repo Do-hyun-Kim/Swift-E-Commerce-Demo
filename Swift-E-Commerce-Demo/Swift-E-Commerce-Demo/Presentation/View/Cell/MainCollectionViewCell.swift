@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import SnapKit
 
 class MainCollectionViewCell: UICollectionViewCell {
     
@@ -17,15 +17,13 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     private var productImageView: UIImageView = {
         $0.contentMode = .scaleToFill
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 3
         $0.layer.masksToBounds = true
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        
         return $0
     }(UIImageView())
     
     private var productBrandLabel: UILabel = {
-        $0.font = .boldSystemFont(ofSize: 8)
+        $0.font = .boldSystemFont(ofSize: 11)
         $0.textAlignment = .left
         $0.textColor = .black
         $0.numberOfLines = 1
@@ -35,16 +33,28 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     
     private var productNameLabel: UILabel = {
-        $0.font = .systemFont(ofSize: 8)
+        $0.font = .systemFont(ofSize: 11)
+        $0.textColor = .black.withAlphaComponent(0.8)
         $0.textAlignment = .left
-        $0.numberOfLines = 2
+        $0.numberOfLines = 1
+        $0.lineBreakMode = .byTruncatingTail
+        return $0
+    }(UILabel())
+    
+    private var productDiscountLabel: UILabel = {
+        $0.font = .boldSystemFont(ofSize: 13)
+        $0.textColor = .systemPink
+        $0.numberOfLines = 1
+        $0.textAlignment = .left
+        
         return $0
     }(UILabel())
     
     private var productCostLabel: UILabel = {
-        
-        
-        
+        $0.font = .boldSystemFont(ofSize: 11)
+        $0.textColor = .black
+        $0.numberOfLines = 1
+        $0.textAlignment = .left
         return $0
     }(UILabel())
     
@@ -59,16 +69,32 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     private func configure() {
-        [productImageView,productBrandLabel,productNameLabel].forEach {
-            addSubview($0)
+        [productImageView,productBrandLabel,productNameLabel,productDiscountLabel].forEach {
+            self.contentView.addSubview($0)
         }
         
-        self.backgroundColor = .systemPink
-        productImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        productImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        productImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        productImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        productImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        productImageView.snp.makeConstraints {
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(130)
+        }
+        
+        productBrandLabel.snp.makeConstraints {
+            $0.top.equalTo(productImageView.snp.bottom).offset(10)
+            $0.left.right.equalTo(productImageView)
+            $0.height.equalTo(10)
+        }
+        
+        productNameLabel.snp.makeConstraints {
+            $0.top.equalTo(productBrandLabel.snp.bottom).offset(5)
+            $0.left.right.equalTo(productBrandLabel)
+            $0.height.equalTo(10)
+        }
+        
+        productDiscountLabel.snp.makeConstraints {
+            $0.top.equalTo(productNameLabel.snp.bottom).offset(3)
+            $0.left.right.equalTo(productNameLabel)
+            $0.height.equalTo(13)
+        }
         
     }
     
@@ -78,6 +104,9 @@ class MainCollectionViewCell: UICollectionViewCell {
             guard let `self` = self else { return }
             DispatchQueue.main.async {
                 self.productImageView.image = UIImage(data: element)
+                self.productBrandLabel.text = viewModel.productItems!.info[indexPath.item].productBrand
+                self.productNameLabel.text = viewModel.productItems?.info[indexPath.item].productName
+                self.productDiscountLabel.text = "\(viewModel.productItems!.info[indexPath.item].productDiscount)%"
             }
         }
     }
