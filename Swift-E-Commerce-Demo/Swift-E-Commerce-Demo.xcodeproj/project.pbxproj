@@ -31,6 +31,7 @@
 		FFFF45DD283F8DF000B3A0E6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FFFF45DC283F8DF000B3A0E6 /* RxCocoa */; };
 		FFFF45DF283F8DF000B3A0E6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = FFFF45DE283F8DF000B3A0E6 /* RxRelay */; };
 		FFFF45E1283F8DF000B3A0E6 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFFF45E0283F8DF000B3A0E6 /* RxSwift */; };
+		FFFF45E4283F90E700B3A0E6 /* BannerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFF45E3283F90E700B3A0E6 /* BannerFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		FFE8540C2834C871008A5381 /* MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUseCase.swift; sourceTree = "<group>"; };
 		FFE8540E2834DBE6008A5381 /* MainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
 		FFE85411283626CD008A5381 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFFF45E3283F90E700B3A0E6 /* BannerFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,11 +283,20 @@
 		FFE85410283626BC008A5381 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				FFFF45E2283F90D700B3A0E6 /* FooterView */,
 				FFAC2F09283CDD5B009868E8 /* HeaderView */,
 				FFE85411283626CD008A5381 /* MainCollectionViewCell.swift */,
 				FFAC2F02283CABC4009868E8 /* BannerCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		FFFF45E2283F90D700B3A0E6 /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				FFFF45E3283F90E700B3A0E6 /* BannerFooterView.swift */,
+			);
+			path = FooterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +447,7 @@
 				FFE853C22833C8D4008A5381 /* MainViewController.swift in Sources */,
 				FFAC2F03283CABC4009868E8 /* BannerCollectionViewCell.swift in Sources */,
 				FFE853BE2833C8D4008A5381 /* AppDelegate.swift in Sources */,
+				FFFF45E4283F90E700B3A0E6 /* BannerFooterView.swift in Sources */,
 				FFAC2EFE283B92AD009868E8 /* ImageCache.swift in Sources */,
 				FFE854002833E2B8008A5381 /* MainEntity.swift in Sources */,
 				FFE85412283626CD008A5381 /* MainCollectionViewCell.swift in Sources */,
