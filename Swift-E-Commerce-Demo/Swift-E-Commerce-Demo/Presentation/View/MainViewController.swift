@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
     private func configure() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
-        viewModel.viewDidload()
+
         collectionView.delegate = self
         collectionView.dataSource = self
         

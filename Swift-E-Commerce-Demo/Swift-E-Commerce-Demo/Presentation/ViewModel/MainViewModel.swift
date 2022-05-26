@@ -14,13 +14,11 @@ struct MainViewModelAction {
 }
 
 protocol MainViewModelInput {
-    func viewDidload()
     func didSelectItem(at indexPath: IndexPath)
-    func numberOfSections() -> Int
 }
 
 protocol MainViewModelOutput {
-
+    func numberOfSections() -> Int
 }
 
 
@@ -33,6 +31,9 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     private let mainUseCase: MainUseCase
     public var productItems: MainEntity?
     
+    //MARK: Obsservable Entiy
+
+    
     enum MainSection: CaseIterable {
         case banner
         case product
@@ -41,11 +42,15 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     init(actions: MainViewModelAction, mainUseCase: MainUseCase) {
         self.actions = actions
         self.mainUseCase = mainUseCase
+        
+        mainUseCase.execute()
+            .subscribe { event in
+                self.productItems = event.element
+            }.disposed(by: disposeBag)
     }
     
     public func setDecimalCost(at indexPath: IndexPath) -> String {
         return mainUseCase.executeDecimalCost(entity: productItems!.info[indexPath.item].productCost)
-        
     }
     
     public func setTransformImage(at indexPath: IndexPath, completion: @escaping(Data) -> Void ) {
@@ -77,13 +82,7 @@ extension MainViewModel {
         return MainSection.allCases.count
     }
     
-    func viewDidload() {
-        mainUseCase.execute()
-            .subscribe { event in
-                self.productItems = event.element
-            }.disposed(by: disposeBag)
-    }
-    
+    //MARK: - OUTPUT
     func didSelectItem(at indexPath: IndexPath) {
         actions?.showDetailView(productItems!.info[indexPath.item])
     }

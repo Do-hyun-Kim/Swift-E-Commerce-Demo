@@ -6,12 +6,16 @@
 //
 
 import XCTest
+import RxSwift
+
 @testable import Swift_E_Commerce_Demo
 
 class Swift_E_Commerce_DemoTests: XCTestCase {
     
     var viewModel: MainViewModel!
     var flowDI: PresenterDI!
+    var disposeBag: DisposeBag!
+    
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,6 +26,7 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         self.viewModel = nil
         self.flowDI = nil
+        self.disposeBag = nil
     }
 
     func testExample() throws {
@@ -29,6 +34,7 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    //Success
     func test_FlowDIViewModel() {
         //given
         let actions = MainViewModelAction(showDetailView: testDetailView)
@@ -42,36 +48,17 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     }
     
     
-    func test_ProductList() {
-        //MARK: Product List Test Code
-        //given
-        let actions = MainViewModelAction(showDetailView: testDetailView)
-        viewModel = flowDI.makeMainViewModel(actions: actions)
-        //when
-        
-        viewModel.mainUseCase.execute { result in
-            self.viewModel.items.onNext(result)
-        }
-        
-        //then
-        XCTAssertNotNil(viewModel.items, "testProductList Value Not Nil")
-    }
+    //Success
+    func test_DecimalCost() {
     
-    func test_TransfromImage() {
         //given
-        
-        let actions = MainViewModelAction(showDetailView: testDetailView)
-        viewModel = flowDI.makeMainViewModel(actions: actions)
+        let useCase: DefaultMainUseCase = DefaultMainUseCase(mainRepository: DefaultMainRepository())
         
         //when
-        let testImage = viewModel.mainUseCase.executeimage(entity: viewModel.productItems, at: IndexPath(item: 0, section: 0))
+        let testValue = useCase.executeDecimalCost(entity: 100000)
         
         //then
-        XCTAssertNoThrow(testImage, "Throw Image")
-    }
-    
-    func test_BannerList() {
-        
+        XCTAssertEqual("100,000원", testValue, "Decimal Cost Value Equal")
     }
     
     func testDetailView(product: ProductEntities) {}
