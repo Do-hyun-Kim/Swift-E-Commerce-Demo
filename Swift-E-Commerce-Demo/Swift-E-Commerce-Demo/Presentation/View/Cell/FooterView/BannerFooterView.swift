@@ -11,6 +11,13 @@ import SnapKit
 
 class BannerFooterView: UICollectionReusableView {
     
+    private var deliveryImageView: UIImageView = {
+        $0.contentMode = .scaleToFill
+        $0.image = UIImage(named: "delivery")
+        
+        return $0
+    }(UIImageView())
+
     private var contentView: UIView = {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
@@ -69,7 +76,9 @@ class BannerFooterView: UICollectionReusableView {
             addSubview($0)
         }
         
-        contentView.addSubview(contentSubView)
+        [contentSubView,deliveryImageView].forEach {
+            contentView.addSubview($0)
+        }
         
         contentView.snp.makeConstraints {
             $0.top.left.equalToSuperview().offset(15)
@@ -88,6 +97,13 @@ class BannerFooterView: UICollectionReusableView {
             $0.width.lessThanOrEqualTo(contentView)
             $0.height.equalTo(10)
             
+        }
+        
+        deliveryImageView.snp.makeConstraints {
+            $0.left.equalTo(subTitleLabel)
+            $0.bottom.equalTo(subTitleLabel.snp.top).offset(-10)
+            $0.height.equalTo(20)
+            $0.width.equalTo(90)
         }
     }
     

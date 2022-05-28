@@ -17,8 +17,10 @@ protocol MainViewModelInput {
     func didSelectItem(at indexPath: IndexPath)
 }
 
+//최고가,최저가 Item 합친다
 protocol MainViewModelOutput {
     func numberOfSections() -> Int
+    var costFilterItems: BehaviorSubject<[Int]> { get set }
 }
 
 
@@ -30,6 +32,7 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     private let actions: MainViewModelAction?
     private let mainUseCase: MainUseCase
     public var productItems: MainEntity?
+    public var costFilterItems: BehaviorSubject<[Int]> = BehaviorSubject<[Int]>(value: [])
     
     //MARK: Obsservable Entiy
 

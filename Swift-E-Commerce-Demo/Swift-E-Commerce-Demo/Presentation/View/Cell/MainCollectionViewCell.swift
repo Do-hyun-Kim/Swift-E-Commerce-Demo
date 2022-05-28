@@ -14,6 +14,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     //MARK: Property
     static let reuseIdentifier: String = String(describing: self)
+    private let disposeBag: DisposeBag = DisposeBag()
     
     private var productImageView: UIImageView = {
         $0.contentMode = .scaleToFill
@@ -114,6 +115,11 @@ class MainCollectionViewCell: UICollectionViewCell {
                 self.productNameLabel.text = viewModel.productItems?.info[indexPath.item].productName
                 self.productDiscountLabel.text = "\(viewModel.productItems!.info[indexPath.item].productDiscount)%"
                 self.productCostLabel.text = viewModel.setDecimalCost(at: indexPath)
+                
+                viewModel.costFilterItems
+                    .subscribe { event in
+                        print("Cost Filter Element \(event.element)")
+                    }.disposed(by: self.disposeBag)
             }
         }
     }

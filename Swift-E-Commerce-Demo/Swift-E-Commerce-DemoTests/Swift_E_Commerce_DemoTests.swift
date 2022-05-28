@@ -64,6 +64,16 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     func testDetailView(product: ProductEntities) {}
     
     
+    //최저가 상품 Unit Test
+    func test_Lower_Product() {
+    
+    }
+    
+    //최고가 상품 Unit Test
+    func test_High_Porduct() {
+        
+    }
+    
     
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
