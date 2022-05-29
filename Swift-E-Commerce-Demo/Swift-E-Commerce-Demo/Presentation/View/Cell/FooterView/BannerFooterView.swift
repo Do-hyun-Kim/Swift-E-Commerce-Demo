@@ -11,13 +11,6 @@ import SnapKit
 
 class BannerFooterView: UICollectionReusableView {
     
-    private var deliveryImageView: UIImageView = {
-        $0.contentMode = .scaleToFill
-        $0.image = UIImage(named: "delivery")
-        
-        return $0
-    }(UIImageView())
-
     private var contentView: UIView = {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
@@ -35,13 +28,19 @@ class BannerFooterView: UICollectionReusableView {
         return $0
     }(UIImageView())
     
+    private var deliveryImageView: UIImageView = {
+        $0.contentMode = .scaleToFill
+        $0.image = UIImage(named: "delivery")
+        
+        return $0
+    }(UIImageView())
     
     private var contentLabel: UILabel = {
-        $0.font = .boldSystemFont(ofSize: 12)
+        $0.font = .boldSystemFont(ofSize: 15)
         $0.textAlignment = .left
         $0.numberOfLines = 1
         $0.textColor = .black
-        $0.text = "지금 주문하면 내일 도착"
+        $0.text = "무료배송, 빠른 도착"
         
         return $0
     }(UILabel())
@@ -104,6 +103,14 @@ class BannerFooterView: UICollectionReusableView {
             $0.bottom.equalTo(subTitleLabel.snp.top).offset(-10)
             $0.height.equalTo(20)
             $0.width.equalTo(90)
+        }
+        
+        contentLabel.snp.makeConstraints {
+            $0.left.equalTo(deliveryImageView.snp.right).offset(10)
+            $0.centerY.equalTo(deliveryImageView)
+            $0.height.equalTo(20)
+            $0.width.lessThanOrEqualTo(contentView)
+            
         }
     }
     

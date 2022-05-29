@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 
 struct MainViewModelAction {
@@ -15,16 +16,22 @@ struct MainViewModelAction {
 
 protocol MainViewModelInput {
     func didSelectItem(at indexPath: IndexPath)
+    var lowerFilterInput: PublishRelay<Void> { get set }
+    var highFilterInput: PublishRelay<Void> { get set }
 }
 
 //최고가,최저가 Item 합친다
 protocol MainViewModelOutput {
     func numberOfSections() -> Int
-    
 }
 
 
 final class MainViewModel: MainViewModelInput, MainViewModelOutput{
+    
+    //MARK: INPUT
+    public var lowerFilterInput: PublishRelay<Void> = PublishRelay<Void>()
+    public var highFilterInput: PublishRelay<Void> = PublishRelay<Void>()
+    
     
     //MARK: - OUTPUT
 
@@ -33,9 +40,6 @@ final class MainViewModel: MainViewModelInput, MainViewModelOutput{
     private let mainUseCase: MainUseCase
     public var productItems: MainEntity?
   
-    
-    //MARK: Obsservable Entiy
-
     
     enum MainSection: CaseIterable {
         case banner
