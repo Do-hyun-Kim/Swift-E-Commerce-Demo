@@ -34,7 +34,7 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    //Success
+    //ViewModel init Success
     func test_FlowDIViewModel() {
         //given
         let actions = MainViewModelAction(showDetailView: testDetailView)
@@ -48,7 +48,7 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     }
     
     
-    //Success
+    //상품 가격 Decimal 변환 Success
     func test_DecimalCost() {
     
         //given
@@ -64,9 +64,22 @@ class Swift_E_Commerce_DemoTests: XCTestCase {
     func testDetailView(product: ProductEntities) {}
     
     
-    //최저가 상품 Unit Test
+    //최저가 상품 List 반환 Success
     func test_Lower_Product() {
-    
+        
+        //given
+        let lowerUseCase: DefaultMainUseCase = DefaultMainUseCase(mainRepository: DefaultMainRepository())
+        let actions = MainViewModelAction(showDetailView: testDetailView)
+        viewModel = flowDI.makeMainViewModel(actions: actions)
+        
+        
+        //when
+        let testLowerPrice = lowerUseCase.executeLowerPriceFilter(entity: viewModel.productItems!.info)
+        
+        
+        //then
+        XCTAssertNotNil(testLowerPrice, "Lower Price Value Nil Exception Error")
+        
     }
     
     //최고가 상품 Unit Test

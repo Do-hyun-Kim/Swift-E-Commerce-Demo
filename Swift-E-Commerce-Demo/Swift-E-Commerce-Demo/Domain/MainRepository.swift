@@ -12,6 +12,7 @@ protocol MainRepository {
     func fetchMainProductList() -> Observable<MainEntity>
     func fetchTransformDecimal(entity: Int) -> String
     func fetchTransformImage(entity: String) -> Observable<Data>
+    func fetchLowerPrice(entity: [ProductEntities]) -> Observable<[Int]>
 }
 
 final class DefaultMainRepository: MainRepository {
@@ -45,6 +46,18 @@ final class DefaultMainRepository: MainRepository {
             }
             return Disposables.create()
         }
+    }
+    
+    func fetchLowerPrice(entity: [ProductEntities]) -> Observable<[Int]> {
+        let lowerEntity: [Int] = entity
+            .map{$0.productCost}
+            .sorted{ $0 < $1}
+    
+        return Observable.create { observer in
+            observer.onNext(lowerEntity)
+            return Disposables.create()
+        }
+            
     }
     
     

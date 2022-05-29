@@ -115,11 +115,6 @@ class MainCollectionViewCell: UICollectionViewCell {
                 self.productNameLabel.text = viewModel.productItems?.info[indexPath.item].productName
                 self.productDiscountLabel.text = "\(viewModel.productItems!.info[indexPath.item].productDiscount)%"
                 self.productCostLabel.text = viewModel.setDecimalCost(at: indexPath)
-                
-                viewModel.costFilterItems
-                    .subscribe { event in
-                        print("Cost Filter Element \(event.element)")
-                    }.disposed(by: self.disposeBag)
             }
         }
     }

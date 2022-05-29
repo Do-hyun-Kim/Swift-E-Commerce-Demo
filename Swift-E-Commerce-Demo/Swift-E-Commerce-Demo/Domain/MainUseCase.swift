@@ -12,6 +12,7 @@ protocol MainUseCase {
     func execute() -> Observable<MainEntity>
     func executeDecimalCost(entity: Int) -> String
     func executeImageData(entity: String) -> Observable<Data>
+    func executeLowerPriceFilter(entity: [ProductEntities]) -> Observable<[Int]>
 }
 
 
@@ -35,5 +36,8 @@ final class DefaultMainUseCase: MainUseCase {
         return mainRepository.fetchTransformImage(entity: entity)
     }
     
+    func executeLowerPriceFilter(entity: [ProductEntities]) -> Observable<[Int]> {
+        return mainRepository.fetchLowerPrice(entity: entity)
+    }
     
 }
